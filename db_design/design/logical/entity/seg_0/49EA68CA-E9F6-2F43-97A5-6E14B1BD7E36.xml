@@ -1,0 +1,59 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="49EA68CA-E9F6-2F43-97A5-6E14B1BD7E36" name="category">
+<createdBy>mircea</createdBy>
+<createdTime>2018-11-05 16:11:29 UTC</createdTime>
+<ownerDesignName>design</ownerDesignName>
+<engineerTo>
+<item key="F5B6321E-F341-2A2F-4CB7-2652674C8092" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id" id="29E6322A-4AF5-1FEC-5907-B61B6B71A4E1">
+<createdBy>mircea</createdBy>
+<createdTime>2018-11-05 16:11:35 UTC</createdTime>
+<ownerDesignName>design</ownerDesignName>
+<engineerTo>
+<item key="F5B6321E-F341-2A2F-4CB7-2652674C8092" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="name" id="1901A52B-A1C5-E1C2-70EA-C35ABB0ED17A">
+<createdBy>mircea</createdBy>
+<createdTime>2018-11-05 16:11:46 UTC</createdTime>
+<ownerDesignName>design</ownerDesignName>
+<engineerTo>
+<item key="F5B6321E-F341-2A2F-4CB7-2652674C8092" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="53C3538C-33BD-D5A4-DCD4-75BFDAFD14BF" name="category PK">
+<createdBy>mircea</createdBy>
+<createdTime>2018-11-05 16:11:42 UTC</createdTime>
+<ownerDesignName>design</ownerDesignName>
+<engineerTo>
+<item key="F5B6321E-F341-2A2F-4CB7-2652674C8092" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>29E6322A-4AF5-1FEC-5907-B61B6B71A4E1</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

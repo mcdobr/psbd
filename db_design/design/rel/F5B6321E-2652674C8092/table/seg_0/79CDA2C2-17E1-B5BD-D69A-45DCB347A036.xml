@@ -1,0 +1,110 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="79CDA2C2-17E1-B5BD-D69A-45DCB347A036" name="product">
+<createdBy>mircea</createdBy>
+<createdTime>2018-11-05 16:33:27 UTC</createdTime>
+<generatorID>4DA7522B-EA63-677B-19BF-CAEB770DB033</generatorID>
+<ownerDesignName>design</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="C0E67938-1DFA-6CA6-3A72-505513170BB7">
+<createdBy>mircea</createdBy>
+<createdTime>2018-11-05 16:33:27 UTC</createdTime>
+<generatorID>23F500A3-9B22-E007-14CA-9702A52242A5</generatorID>
+<ownerDesignName>design</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="name" id="2266744F-C82E-3933-574D-A8C616CC0114">
+<createdBy>mircea</createdBy>
+<createdTime>2018-11-05 16:33:27 UTC</createdTime>
+<generatorID>E3817665-859A-E329-7065-827FE85401A8</generatorID>
+<ownerDesignName>design</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="unit" id="BE3ECE70-299A-A9B5-1886-B7B806542ACD">
+<createdBy>mircea</createdBy>
+<createdTime>2018-11-05 16:33:27 UTC</createdTime>
+<generatorID>D249DA2F-DE7A-7D1B-4A0E-67B1B081959C</generatorID>
+<ownerDesignName>design</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="price" id="10D10E1A-D8A5-E1D5-5B4E-73CA81C99CF1">
+<createdBy>mircea</createdBy>
+<createdTime>2018-11-05 16:33:27 UTC</createdTime>
+<generatorID>4F856FA7-42FE-A5FB-46A6-A8BE34DEF2BD</generatorID>
+<ownerDesignName>design</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT021</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="categoryId" id="9F7CD710-91A9-50FB-A920-806A527DE9BD">
+<createdBy>mircea</createdBy>
+<createdTime>2018-11-05 16:33:27 UTC</createdTime>
+<generatorID>74A1202D-3FAC-C797-7B2D-5348E99E7E7D</generatorID>
+<ownerDesignName>design</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="category_id" id="3C545707-2B85-042D-FD91-07A47308C8C6">
+<createdBy>mircea</createdBy>
+<createdTime>2018-11-05 16:33:27 UTC</createdTime>
+<generatorID>B59D5BD0-1C49-769E-F015-86A08AC52DFC</generatorID>
+<ownerDesignName>design</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="4D357C20-9A0C-F1B1-72D2-D17A3F45F11A" referredColumn="A613E9F2-77F5-EDE6-3CEF-1F1883B4A09A"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="53B38875-7E1F-38C6-9721-AFD4A01054E9" name="product_PK">
+<createdBy>mircea</createdBy>
+<createdTime>2018-11-05 16:33:27 UTC</createdTime>
+<generatorID>E939247D-50D5-F51B-BEEA-956E8F2C82CC</generatorID>
+<ownerDesignName>design</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C0E67938-1DFA-6CA6-3A72-505513170BB7"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="ACDAF355-2F7B-E51E-EFE3-A50D57478170" name="product_category_FK">
+<createdBy>mircea</createdBy>
+<createdTime>2018-11-05 16:33:27 UTC</createdTime>
+<generatorID>BB5B1A52-3579-57BF-4292-9A3DA7F2222A</generatorID>
+<ownerDesignName>design</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="3C545707-2B85-042D-FD91-07A47308C8C6"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

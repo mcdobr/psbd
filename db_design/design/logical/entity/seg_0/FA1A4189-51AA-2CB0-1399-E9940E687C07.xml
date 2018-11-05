@@ -1,0 +1,111 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="FA1A4189-51AA-2CB0-1399-E9940E687C07" name="productBillItem">
+<createdBy>mircea</createdBy>
+<createdTime>2018-11-05 16:17:59 UTC</createdTime>
+<ownerDesignName>design</ownerDesignName>
+<engineerTo>
+<item key="F5B6321E-F341-2A2F-4CB7-2652674C8092" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id" id="6A05B9F5-1737-09D1-028F-7231A6E2176B">
+<createdBy>mircea</createdBy>
+<createdTime>2018-11-05 16:18:16 UTC</createdTime>
+<ownerDesignName>design</ownerDesignName>
+<engineerTo>
+<item key="F5B6321E-F341-2A2F-4CB7-2652674C8092" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="billId" id="A66FA19D-5418-F301-C6A6-F218B5D0FD19">
+<createdBy>mircea</createdBy>
+<createdTime>2018-11-05 16:18:33 UTC</createdTime>
+<ownerDesignName>design</ownerDesignName>
+<engineerTo>
+<item key="F5B6321E-F341-2A2F-4CB7-2652674C8092" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="productId" id="13BB4E65-4ED1-668D-3F12-D0DDCE7B029B">
+<createdBy>mircea</createdBy>
+<createdTime>2018-11-05 16:18:45 UTC</createdTime>
+<ownerDesignName>design</ownerDesignName>
+<engineerTo>
+<item key="F5B6321E-F341-2A2F-4CB7-2652674C8092" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="quantity" id="6B77E86E-15CC-EA9D-9CD4-0D2B156999D2">
+<createdBy>mircea</createdBy>
+<createdTime>2018-11-05 16:19:01 UTC</createdTime>
+<ownerDesignName>design</ownerDesignName>
+<engineerTo>
+<item key="F5B6321E-F341-2A2F-4CB7-2652674C8092" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id1" id="B8774B99-AD30-CEC4-80BA-F7E086F6DB0F">
+<createdBy>mircea</createdBy>
+<createdTime>2018-11-05 16:21:42 UTC</createdTime>
+<generatorID>24803B9B-D09F-D671-4EAA-4E4C4F5904E7</generatorID>
+<ownerDesignName>design</ownerDesignName>
+<engineerTo>
+<item key="F5B6321E-F341-2A2F-4CB7-2652674C8092" value="true"/>
+</engineerTo>
+<referedAttribute>19A300BC-90D1-0A07-EAFA-1D1E9485C721</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id2" id="714C215D-978F-CCAD-43A6-425024DBF6DA">
+<createdBy>mircea</createdBy>
+<createdTime>2018-11-05 16:23:03 UTC</createdTime>
+<generatorID>442F5405-C209-3A2C-CB8E-827185EACBAF</generatorID>
+<ownerDesignName>design</ownerDesignName>
+<engineerTo>
+<item key="F5B6321E-F341-2A2F-4CB7-2652674C8092" value="true"/>
+</engineerTo>
+<referedAttribute>23F500A3-9B22-E007-14CA-9702A52242A5</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="A6872B16-199C-AEFA-428A-EA8537AEF68F" name="productBillItem PK">
+<createdBy>mircea</createdBy>
+<createdTime>2018-11-05 16:18:25 UTC</createdTime>
+<ownerDesignName>design</ownerDesignName>
+<engineerTo>
+<item key="F5B6321E-F341-2A2F-4CB7-2652674C8092" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>6A05B9F5-1737-09D1-028F-7231A6E2176B</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

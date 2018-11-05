@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="product_historicQuantity" directorySegmentName="seg_0" id="ED7DA17F-B37F-A6B9-0BDF-302FF9054DD8">
+<createdBy>mircea</createdBy>
+<createdTime>2018-11-05 16:21:13 UTC</createdTime>
+<ownerDesignName>design</ownerDesignName>
+<engineerTo>
+<item key="F5B6321E-F341-2A2F-4CB7-2652674C8092" value="true"/>
+</engineerTo>
+<sourcePk>E939247D-50D5-F51B-BEEA-956E8F2C82CC</sourcePk>
+<targetPk>3CFF68A9-4621-4564-0BB2-06E8BC3F14DB</targetPk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>4DA7522B-EA63-677B-19BF-CAEB770DB033</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>EDE6B157-5C5E-6948-9D28-5841490D5A1F</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

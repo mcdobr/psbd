@@ -1,0 +1,117 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="4DA7522B-EA63-677B-19BF-CAEB770DB033" name="product">
+<createdBy>mircea</createdBy>
+<createdTime>2018-11-05 16:11:17 UTC</createdTime>
+<ownerDesignName>design</ownerDesignName>
+<importedID>44DA1DA7-CA9E-F49F-4813-E08E55C63006</importedID>
+<engineerTo>
+<item key="F5B6321E-F341-2A2F-4CB7-2652674C8092" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id" id="23F500A3-9B22-E007-14CA-9702A52242A5">
+<createdBy>mircea</createdBy>
+<createdTime>2018-11-05 16:11:17 UTC</createdTime>
+<ownerDesignName>design</ownerDesignName>
+<importedID>E93A30C8-91CC-DCCE-41D7-DA7CA594D47D</importedID>
+<engineerTo>
+<item key="F5B6321E-F341-2A2F-4CB7-2652674C8092" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="name" id="E3817665-859A-E329-7065-827FE85401A8">
+<createdBy>mircea</createdBy>
+<createdTime>2018-11-05 16:11:17 UTC</createdTime>
+<ownerDesignName>design</ownerDesignName>
+<importedID>DFB75EFD-1587-592B-CF31-67A0C220C5E7</importedID>
+<engineerTo>
+<item key="F5B6321E-F341-2A2F-4CB7-2652674C8092" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="unit" id="D249DA2F-DE7A-7D1B-4A0E-67B1B081959C">
+<createdBy>mircea</createdBy>
+<createdTime>2018-11-05 16:11:17 UTC</createdTime>
+<ownerDesignName>design</ownerDesignName>
+<importedID>9CC822CE-33EC-AFB8-F42A-324D38A3B68F</importedID>
+<engineerTo>
+<item key="F5B6321E-F341-2A2F-4CB7-2652674C8092" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="price" id="4F856FA7-42FE-A5FB-46A6-A8BE34DEF2BD">
+<createdBy>mircea</createdBy>
+<createdTime>2018-11-05 16:11:17 UTC</createdTime>
+<ownerDesignName>design</ownerDesignName>
+<importedID>785111F2-6AE1-326D-EFA9-E31C119D74A9</importedID>
+<engineerTo>
+<item key="F5B6321E-F341-2A2F-4CB7-2652674C8092" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT021</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="categoryId" id="74A1202D-3FAC-C797-7B2D-5348E99E7E7D">
+<createdBy>mircea</createdBy>
+<createdTime>2018-11-05 16:11:17 UTC</createdTime>
+<ownerDesignName>design</ownerDesignName>
+<importedID>E9FCA9EF-A157-16DC-BEEE-4105D8A1DDAA</importedID>
+<engineerTo>
+<item key="F5B6321E-F341-2A2F-4CB7-2652674C8092" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id1" id="B59D5BD0-1C49-769E-F015-86A08AC52DFC">
+<createdBy>mircea</createdBy>
+<createdTime>2018-11-05 16:23:21 UTC</createdTime>
+<generatorID>BB5B1A52-3579-57BF-4292-9A3DA7F2222A</generatorID>
+<ownerDesignName>design</ownerDesignName>
+<engineerTo>
+<item key="F5B6321E-F341-2A2F-4CB7-2652674C8092" value="true"/>
+</engineerTo>
+<referedAttribute>29E6322A-4AF5-1FEC-5907-B61B6B71A4E1</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="E939247D-50D5-F51B-BEEA-956E8F2C82CC" name="product PK">
+<createdBy>mircea</createdBy>
+<createdTime>2018-11-05 16:11:17 UTC</createdTime>
+<ownerDesignName>design</ownerDesignName>
+<importedID>27C20A1B-7E2B-A005-574D-4B66F29D59BC</importedID>
+<engineerTo>
+<item key="F5B6321E-F341-2A2F-4CB7-2652674C8092" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>23F500A3-9B22-E007-14CA-9702A52242A5</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>
