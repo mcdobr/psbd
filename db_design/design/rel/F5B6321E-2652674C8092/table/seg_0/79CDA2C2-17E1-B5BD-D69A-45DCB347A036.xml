@@ -36,10 +36,20 @@
 <createdTime>2018-11-05 16:33:27 UTC</createdTime>
 <generatorID>D249DA2F-DE7A-7D1B-4A0E-67B1B081959C</generatorID>
 <ownerDesignName>design</ownerDesignName>
+<constraintName>ck_correct_unit</constraintName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
 <dataTypeSize>20</dataTypeSize>
+<listOfValues>
+<valueDef value="" description=""/>
+<valueDef value="buc" description=""/>
+<valueDef value="kg" description=""/>
+<valueDef value="m" description=""/>
+<valueDef value="m2" description=""/>
+<valueDef value="m3" description=""/>
+</listOfValues>
+<defaultValue>buc</defaultValue>
 <ownDataTypeParameters>20,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
@@ -48,21 +58,13 @@
 <createdTime>2018-11-05 16:33:27 UTC</createdTime>
 <generatorID>4F856FA7-42FE-A5FB-46A6-A8BE34DEF2BD</generatorID>
 <ownerDesignName>design</ownerDesignName>
+<constraintName>ck_price_positive</constraintName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT021</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
-<Column name="categoryId" id="9F7CD710-91A9-50FB-A920-806A527DE9BD">
-<createdBy>mircea</createdBy>
-<createdTime>2018-11-05 16:33:27 UTC</createdTime>
-<generatorID>74A1202D-3FAC-C797-7B2D-5348E99E7E7D</generatorID>
-<ownerDesignName>design</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
+<checkConstraint>
+<implementationDef dbType="Generic Constraint" definition="price &gt; 0.0"/>
+</checkConstraint>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>

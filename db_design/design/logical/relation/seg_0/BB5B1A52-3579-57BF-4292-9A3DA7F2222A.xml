@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="category_product" directorySegmentName="seg_0" id="BB5B1A52-3579-57BF-4292-9A3DA7F2222A">
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="product category FK" directorySegmentName="seg_0" id="BB5B1A52-3579-57BF-4292-9A3DA7F2222A">
 <createdBy>mircea</createdBy>
 <createdTime>2018-11-05 16:23:21 UTC</createdTime>
 <ownerDesignName>design</ownerDesignName>
@@ -7,7 +7,6 @@
 <item key="F5B6321E-F341-2A2F-4CB7-2652674C8092" value="true"/>
 </engineerTo>
 <sourcePk>53C3538C-33BD-D5A4-DCD4-75BFDAFD14BF</sourcePk>
-<targetPk>E939247D-50D5-F51B-BEEA-956E8F2C82CC</targetPk>
 <identifying>false</identifying>
 <optionalSource>true</optionalSource>
 <optionalTarget>false</optionalTarget>

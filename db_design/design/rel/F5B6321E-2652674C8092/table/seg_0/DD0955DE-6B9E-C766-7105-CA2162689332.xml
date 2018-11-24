@@ -19,30 +19,6 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="productId" id="46F1486F-1A93-4874-AF30-465C4FAE14F8">
-<createdBy>mircea</createdBy>
-<createdTime>2018-11-05 16:33:27 UTC</createdTime>
-<generatorID>CC1568FC-3528-B572-785B-31058B0329DC</generatorID>
-<ownerDesignName>design</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
-<Column name="afterBillId" id="8847689A-D4DC-48FB-3B67-36B63D99F9A5">
-<createdBy>mircea</createdBy>
-<createdTime>2018-11-05 16:33:27 UTC</createdTime>
-<generatorID>468D4CF9-4F79-0F2E-752C-0F5FBBF30933</generatorID>
-<ownerDesignName>design</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
 <Column name="quantity" id="23231486-43CD-9BBB-4A29-BA92D7A88154">
 <createdBy>mircea</createdBy>
 <createdTime>2018-11-05 16:33:27 UTC</createdTime>
@@ -53,36 +29,6 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
-</Column>
-<Column name="product_id" id="B48DA56C-F2EB-E444-B10D-78E7D94AD57E">
-<createdBy>mircea</createdBy>
-<createdTime>2018-11-05 16:33:27 UTC</createdTime>
-<generatorID>70C4966F-CDAB-C734-ED1F-C19BD9B9C0B6</generatorID>
-<ownerDesignName>design</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-<previousColumn>false</previousColumn>
-<autoIncrementCycle>false</autoIncrementCycle>
-<associations>
-<colAssociation fkAssociation="19C1D51F-2F6E-D5A2-2B9C-D4E0ECBFDAC7" referredColumn="C0E67938-1DFA-6CA6-3A72-505513170BB7"/>
-</associations>
-</Column>
-<Column name="bill_id" id="B9DED028-3BB2-A43E-ECD2-A61BC0BF832F">
-<createdBy>mircea</createdBy>
-<createdTime>2018-11-05 16:33:27 UTC</createdTime>
-<generatorID>907F30F6-00D5-5309-9AB8-AF7B477379A3</generatorID>
-<ownerDesignName>design</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-<previousColumn>false</previousColumn>
-<autoIncrementCycle>false</autoIncrementCycle>
-<associations>
-<colAssociation fkAssociation="DC75E15A-FFB0-288C-E853-58CEDE46EE57" referredColumn="18D0A803-3BAA-96FC-9BFF-62CD86D06B80"/>
-</associations>
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
@@ -96,39 +42,6 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="A4EB9F76-507E-61A3-9F0C-43ABEAC11DF7"/>
-</indexColumnUsage>
-</ind_PK_UK>
-<ind_PK_UK id="F3A42A6A-BA53-F2FD-2DF6-DD5492DB7AFA" name="historicQuantity__IDX">
-<createdBy>mircea</createdBy>
-<createdTime>2018-11-05 16:33:27 UTC</createdTime>
-<ownerDesignName>design</ownerDesignName>
-<indexState>Unique Plain Index</indexState>
-<isSurrogateKey>false</isSurrogateKey>
-<relationGeneratorID>8EDA69C4-891D-699E-3811-2655D4203F08</relationGeneratorID>
-<indexColumnUsage>
-<colUsage columnID="B9DED028-3BB2-A43E-ECD2-A61BC0BF832F"/>
-</indexColumnUsage>
-</ind_PK_UK>
-<ind_PK_UK id="179B3449-E172-A3C7-E515-A106FB7255F1" name="historicQuantity_bill_FK">
-<createdBy>mircea</createdBy>
-<createdTime>2018-11-05 16:33:27 UTC</createdTime>
-<generatorID>8EDA69C4-891D-699E-3811-2655D4203F08</generatorID>
-<ownerDesignName>design</ownerDesignName>
-<indexState>Foreign Key</indexState>
-<isSurrogateKey>false</isSurrogateKey>
-<indexColumnUsage>
-<colUsage columnID="B9DED028-3BB2-A43E-ECD2-A61BC0BF832F"/>
-</indexColumnUsage>
-</ind_PK_UK>
-<ind_PK_UK id="F394F1D2-2FB8-5856-FAEA-6FEF446E558C" name="historicQuantity_product_FK">
-<createdBy>mircea</createdBy>
-<createdTime>2018-11-05 16:33:27 UTC</createdTime>
-<generatorID>ED7DA17F-B37F-A6B9-0BDF-302FF9054DD8</generatorID>
-<ownerDesignName>design</ownerDesignName>
-<indexState>Foreign Key</indexState>
-<isSurrogateKey>false</isSurrogateKey>
-<indexColumnUsage>
-<colUsage columnID="B48DA56C-F2EB-E444-B10D-78E7D94AD57E"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

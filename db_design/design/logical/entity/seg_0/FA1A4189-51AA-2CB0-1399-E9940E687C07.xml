@@ -27,32 +27,6 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="billId" id="A66FA19D-5418-F301-C6A6-F218B5D0FD19">
-<createdBy>mircea</createdBy>
-<createdTime>2018-11-05 16:18:33 UTC</createdTime>
-<ownerDesignName>design</ownerDesignName>
-<engineerTo>
-<item key="F5B6321E-F341-2A2F-4CB7-2652674C8092" value="true"/>
-</engineerTo>
-<nullsAllowed>true</nullsAllowed>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="productId" id="13BB4E65-4ED1-668D-3F12-D0DDCE7B029B">
-<createdBy>mircea</createdBy>
-<createdTime>2018-11-05 16:18:45 UTC</createdTime>
-<ownerDesignName>design</ownerDesignName>
-<engineerTo>
-<item key="F5B6321E-F341-2A2F-4CB7-2652674C8092" value="true"/>
-</engineerTo>
-<nullsAllowed>true</nullsAllowed>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
 <Attribute name="quantity" id="6B77E86E-15CC-EA9D-9CD4-0D2B156999D2">
 <createdBy>mircea</createdBy>
 <createdTime>2018-11-05 16:19:01 UTC</createdTime>
@@ -65,7 +39,7 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id1" id="B8774B99-AD30-CEC4-80BA-F7E086F6DB0F">
+<Attribute name="bill id" id="B8774B99-AD30-CEC4-80BA-F7E086F6DB0F">
 <createdBy>mircea</createdBy>
 <createdTime>2018-11-05 16:21:42 UTC</createdTime>
 <generatorID>24803B9B-D09F-D671-4EAA-4E4C4F5904E7</generatorID>
@@ -79,7 +53,7 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id2" id="714C215D-978F-CCAD-43A6-425024DBF6DA">
+<Attribute name="product id" id="714C215D-978F-CCAD-43A6-425024DBF6DA">
 <createdBy>mircea</createdBy>
 <createdTime>2018-11-05 16:23:03 UTC</createdTime>
 <generatorID>442F5405-C209-3A2C-CB8E-827185EACBAF</generatorID>
@@ -93,14 +67,29 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
+<Attribute name="id1" id="FB411A9A-5493-40A3-B9F7-E2C23EE7F57A">
+<createdBy>mircea</createdBy>
+<createdTime>2018-11-24 15:41:40 UTC</createdTime>
+<generatorID>44489B74-5E4E-6AD3-2CB6-C3533AF0E1A3</generatorID>
+<ownerDesignName>design</ownerDesignName>
+<engineerTo>
+<item key="F5B6321E-F341-2A2F-4CB7-2652674C8092" value="true"/>
+</engineerTo>
+<referedAttribute>A91A304F-E641-1CD0-3480-F718F80959CD</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
 <identifier id="A6872B16-199C-AEFA-428A-EA8537AEF68F" name="productBillItem PK">
 <createdBy>mircea</createdBy>
 <createdTime>2018-11-05 16:18:25 UTC</createdTime>
 <ownerDesignName>design</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
 <engineerTo>
-<item key="F5B6321E-F341-2A2F-4CB7-2652674C8092" value="true"/>
+<item key="F5B6321E-F341-2A2F-4CB7-2652674C8092" value="false"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
