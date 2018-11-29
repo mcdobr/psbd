@@ -13,3 +13,5 @@ INSERT INTO category VALUES(12, 'termice');
 INSERT INTO category VALUES(13, 'electrice');
 INSERT INTO category VALUES(14, 'sanitare');
 INSERT INTO category VALUES(15, 'dormitoare');
+
+COMMIT;
