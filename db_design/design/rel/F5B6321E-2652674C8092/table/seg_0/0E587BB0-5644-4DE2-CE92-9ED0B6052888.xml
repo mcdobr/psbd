@@ -100,7 +100,7 @@
 <colUsage columnID="4B2E2B10-643A-F300-A53E-054DD4FBED11"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="17AA6B1B-94E2-0757-5625-775CB196E7BE" name="productBillItem_bill_FK">
+<ind_PK_UK id="17AA6B1B-94E2-0757-5625-775CB196E7BE" name="billItem_bill_FK">
 <createdBy>mircea</createdBy>
 <createdTime>2018-11-05 16:33:27 UTC</createdTime>
 <generatorID>24803B9B-D09F-D671-4EAA-4E4C4F5904E7</generatorID>
@@ -111,7 +111,7 @@
 <colUsage columnID="E09AFCC6-DE14-610D-0452-3AACFDDD896B"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="D7E49874-1A9C-8253-7DC2-2C388675D57C" name="productBillItem_product_FK">
+<ind_PK_UK id="D7E49874-1A9C-8253-7DC2-2C388675D57C" name="billItem_product_FK">
 <createdBy>mircea</createdBy>
 <createdTime>2018-11-05 16:33:27 UTC</createdTime>
 <generatorID>442F5405-C209-3A2C-CB8E-827185EACBAF</generatorID>
@@ -122,7 +122,7 @@
 <colUsage columnID="CD10F05B-7CBF-ECC4-0E0B-2AC21DAB80D3"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="35067C75-E673-84F6-90E9-7872FC86EC5D" name="productBillItem_historicQuantity_FK">
+<ind_PK_UK id="35067C75-E673-84F6-90E9-7872FC86EC5D" name="billItem_historic_FK">
 <createdBy>mircea</createdBy>
 <createdTime>2018-11-24 15:42:08 UTC</createdTime>
 <generatorID>44489B74-5E4E-6AD3-2CB6-C3533AF0E1A3</generatorID>
