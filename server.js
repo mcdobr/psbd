@@ -7,9 +7,9 @@ const database = require('./database/database.js');
 
 
 // const bills = require('./bill');
-const categories = require('./category/category.route');
+const category = require('./category/category.route');
 // const historicQuantites = require('./historicQuantity');
-// const product = require('./product');
+const product = require('./product');
 
 app.use(bodyParser.json({
 
@@ -30,9 +30,8 @@ oracledb.createPool(
 
 
             //app.use('/api/bills', bills);
-            app.use('/api', categories);
+            app.use('/api', category, product);
             //app.use('/api/historicquantities', historicQuantites);
-            //app.use('/api/products', product);
         }
     }   
 );

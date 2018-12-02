@@ -4,13 +4,12 @@ const database = require('../database/database');
 async function find(context) {
     const baseQuery = 
         `SELECT id, name 
-        FROM category`
+        FROM category`;
 
     let query = baseQuery;
     const binds = {};
     if (context.id) {
         binds.id = context.id;
-
         query += `\nWHERE id = :id`;
     }
 
