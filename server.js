@@ -28,18 +28,9 @@ oracledb.createPool(
             console.log('Connected to Oracle Database');
             console.log('Maximum pool listeners: ' + pool.getMaxListeners());
 
-            /*
-            app.get('/', async (req, res) => {
-                const result = await database.simpleExecute('select user, systimestamp from dual');
-                const user = result.rows[0].USER;
-                const date = result.rows[0].SYSTIMESTAMP;
-            
-                res.end(`${user}\n${date}`);
-            }); */
-
 
             //app.use('/api/bills', bills);
-            app.use('/api/categories', categories);
+            app.use('/api', categories);
             //app.use('/api/historicquantities', historicQuantites);
             //app.use('/api/products', product);
         }
