@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/mcdobr/psbd#readme",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "oracledb": "^3.0.0"
   },
