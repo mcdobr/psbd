@@ -4,7 +4,7 @@
   "description": "PSBD project of a shop.",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -25,5 +25,8 @@
   "dependencies": {
     "express": "^4.16.4",
     "oracledb": "^3.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.7"
   }
 }
