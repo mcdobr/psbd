@@ -1,6 +1,5 @@
 const database = require('../database/database');
 
-// The actual SQL query
 async function find(context) {
     const baseQuery = 
         `SELECT id, name 
