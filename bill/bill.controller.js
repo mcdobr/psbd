@@ -2,18 +2,17 @@ const database = require('../database/database');
 
 async function find(context) {
     const baseQuery = 
-        `SELECT id, name, unit, price, category_id
-        FROM product`;
+        `SELECT id, billdate, otherPartyName, billtype 
+        FROM bill`;
 
     let query = baseQuery;
     const binds = {};
     if (context.id) {
         binds.id = context.id;
         query += `\nWHERE id = :id`;
-    } else if (context.categoryId) {
-        binds.categoryId = context.categoryId;
-        query += `\nWHERE category_id = :categoryId`;
     }
+
+    query += `\nORDER BY billdate DESC`;
 
     const result = await database.simpleExecute(query, binds);
     return result.rows;
@@ -23,7 +22,6 @@ async function get(req, res, next) {
     try {
         const context = {};
         context.id = parseInt(req.params.id, 10);
-        context.categoryId = parseInt(req.query.categoryId, 10);
 
         const rows = await find(context);
         if (req.params.id) {
@@ -40,4 +38,23 @@ async function get(req, res, next) {
     }
 }
 
+
+async function createNewBill() {
+
+}
+
+async function post(req, res, next) {
+    console.log(req.body);
+
+
+    try {
+        const context = {};
+        
+
+    } catch (error) {
+        next(error);
+    }
+}
+
 module.exports.get = get;
+module.exports.post = post;

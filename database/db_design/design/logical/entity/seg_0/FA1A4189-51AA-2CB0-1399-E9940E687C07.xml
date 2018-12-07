@@ -67,7 +67,7 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id1" id="FB411A9A-5493-40A3-B9F7-E2C23EE7F57A">
+<Attribute name="historicQuantity id" id="FB411A9A-5493-40A3-B9F7-E2C23EE7F57A">
 <createdBy>mircea</createdBy>
 <createdTime>2018-11-24 15:41:40 UTC</createdTime>
 <generatorID>44489B74-5E4E-6AD3-2CB6-C3533AF0E1A3</generatorID>

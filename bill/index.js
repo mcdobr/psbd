@@ -1,1 +1,3 @@
-var router = require('express').Router()
+const route = require('./bill.route');
+
+module.exports = [route];
