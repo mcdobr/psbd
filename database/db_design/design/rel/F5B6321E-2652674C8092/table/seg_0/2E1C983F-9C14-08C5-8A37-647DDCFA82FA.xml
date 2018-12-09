@@ -19,7 +19,7 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="date" id="F608E40A-03ED-0572-2BC5-F768ED962A91">
+<Column name="billdate" id="F608E40A-03ED-0572-2BC5-F768ED962A91">
 <createdBy>mircea</createdBy>
 <createdTime>2018-11-05 16:33:27 UTC</createdTime>
 <generatorID>6B92B044-A504-B897-60F1-595830971644</generatorID>
@@ -43,7 +43,7 @@
 <ownDataTypeParameters>50,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="type" id="6F96E023-259A-7E1C-BFC3-3E5FF5F8E438">
+<Column name="billtype" id="6F96E023-259A-7E1C-BFC3-3E5FF5F8E438">
 <createdBy>mircea</createdBy>
 <createdTime>2018-11-05 16:33:27 UTC</createdTime>
 <generatorID>EAF1E27D-1474-B16F-0220-653E4A358CDC</generatorID>

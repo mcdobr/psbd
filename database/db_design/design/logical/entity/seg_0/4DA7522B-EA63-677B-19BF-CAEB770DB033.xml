@@ -57,7 +57,6 @@
 <logicalDatatype>LOGDT024</logicalDatatype>
 <dataTypeSize>20</dataTypeSize>
 <listOfValues>
-<valueDef value="" description=""/>
 <valueDef value="buc" description=""/>
 <valueDef value="kg" description=""/>
 <valueDef value="m" description=""/>
@@ -78,11 +77,13 @@
 <constraintName>ck_price_positive</constraintName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT021</logicalDatatype>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
 <checkConstraint>
 <implementationDef dbType="Generic Constraint" definition="price &gt; 0.0"/>
 </checkConstraint>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<ownDataTypeParameters>,10,2</ownDataTypeParameters>
 </Attribute>
 <Attribute name="category id" id="B59D5BD0-1C49-769E-F015-86A08AC52DFC">
 <createdBy>mircea</createdBy>

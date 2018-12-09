@@ -27,7 +27,7 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="date" id="6B92B044-A504-B897-60F1-595830971644">
+<Attribute name="billdate" id="6B92B044-A504-B897-60F1-595830971644">
 <createdBy>mircea</createdBy>
 <createdTime>2018-11-05 16:19:47 UTC</createdTime>
 <ownerDesignName>design</ownerDesignName>
@@ -53,7 +53,7 @@
 <dataTypeSize>50</dataTypeSize>
 <ownDataTypeParameters>50,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="type" id="EAF1E27D-1474-B16F-0220-653E4A358CDC">
+<Attribute name="billtype" id="EAF1E27D-1474-B16F-0220-653E4A358CDC">
 <createdBy>mircea</createdBy>
 <createdTime>2018-11-05 16:20:35 UTC</createdTime>
 <ownerDesignName>design</ownerDesignName>

@@ -10,6 +10,9 @@ async function find(context) {
     if (context.id) {
         binds.id = context.id;
         query += `\nWHERE id = :id`;
+    } else if (context.categoryId) {
+        binds.categoryId = context.categoryId;
+        query += `\nWHERE category_id = :categoryId`;
     }
 
     const result = await database.simpleExecute(query, binds);
@@ -20,6 +23,7 @@ async function get(req, res, next) {
     try {
         const context = {};
         context.id = parseInt(req.params.id, 10);
+        context.categoryId = parseInt(req.query.categoryId, 10);
 
         const rows = await find(context);
         if (req.params.id) {

@@ -1,12 +1,12 @@
-const oracledb = require('oracledb')
-const express = require('express')
+const oracledb = require('oracledb');
+const express = require('express');
 const config = require('./config.js');
 const bodyParser = require('body-parser');
 const app = express();
 const database = require('./database/database.js');
 
 
-// const bills = require('./bill');
+const bills = require('./bill');
 const category = require('./category/category.route');
 // const historicQuantites = require('./historicQuantity');
 const product = require('./product');
@@ -29,12 +29,11 @@ oracledb.createPool(
             console.log('Maximum pool listeners: ' + pool.getMaxListeners());
 
 
-            //app.use('/api/bills', bills);
-            app.use('/api', category, product);
+            app.use('/api', category, product, bills);
+
             //app.use('/api/historicquantities', historicQuantites);
         }
     }   
 );
-
 
 app.listen(config.port);
