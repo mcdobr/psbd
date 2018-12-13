@@ -26,7 +26,7 @@ function simpleExecute(statement, binds = [], opts = {}) {
                 try {
                     await conn.close();
                 } catch (error) {
-                    console.log(error);
+                    console.error(error);
                 }
             }
         }
