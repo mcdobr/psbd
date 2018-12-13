@@ -20,24 +20,7 @@ async function find(context) {
 }
 
 async function get(req, res, next) {
-    try {
-        const context = {};
-        context.id = parseInt(req.params.id, 10);
-        context.categoryId = parseInt(req.query.categoryId, 10);
-
-        const rows = await find(context);
-        if (req.params.id) {
-            if (rows.length === 1) {
-                res.status(200).json(rows[0]);
-            } else {
-                res.status(404).end();
-            }
-        } else {
-            res.status(200).json(rows);
-        }
-    } catch (error) {
-        next(error);
-    }
+    database.get(find, req, res, next);
 }
 
 module.exports.get = get;
