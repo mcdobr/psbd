@@ -1,4 +1,5 @@
 const database = require('../database/database');
+const oracledb = require('oracledb');
 
 async function find(context) {
     const baseQuery = 
@@ -19,23 +20,7 @@ async function find(context) {
 }
 
 async function get(req, res, next) {
-    try {
-        const context = {};
-        context.id = parseInt(req.params.id, 10);
-
-        const rows = await find(context);
-        if (req.params.id) {
-            if (rows.length === 1) {
-                res.status(200).json(rows[0]);
-            } else {
-                res.status(404).end();
-            }
-        } else {
-            res.status(200).json(rows);
-        }
-    } catch (error) {
-        next(error);
-    }
+    database.get(find, req, res, next);
 }
 
 
