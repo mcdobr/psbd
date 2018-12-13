@@ -8,10 +8,10 @@ async function find(context) {
     let query = baseQuery;
     const binds = {};
     if (context.id) {
-        binds.id = context.id;
+        binds.id = parseInt(context.id, 10);
         query += `\nWHERE id = :id`;
     } else if (context.categoryId) {
-        binds.categoryId = context.categoryId;
+        binds.categoryId = parseInt(context.categoryId, 10);
         query += `\nWHERE category_id = :categoryId`;
     }
 
