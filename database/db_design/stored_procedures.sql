@@ -67,13 +67,16 @@ BEGIN
         billItem.product_id = v_productId;
     
     /* Get LATEST PREVIOUS bill that has product listed */
+    /* Only one transaction on the same timestamp */
     IF (v_previous_bills_count > 0) THEN
         SELECT billItem.new_stock, bill.id
         INTO v_previous_stock, v_previous_bill_id
         FROM billItem, bill
         WHERE billItem.bill_id = bill.id AND
             billItem.product_id = v_productId AND
-            ROWNUM = 1
+            bill.billdate = (SELECT MAX(billdate)
+                            FROM bill
+                            WHERE billdate < v_bill.billdate)
         ORDER BY bill.billdate DESC;
     END IF;    
     
