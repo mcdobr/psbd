@@ -1,14 +1,14 @@
-INSERT INTO category VALUES(1, 'bucatarie');
+INSERT INTO category VALUES(1, 'bucătărie');
 INSERT INTO category VALUES(2, 'baie');
-INSERT INTO category VALUES(3, 'mobila');
+INSERT INTO category VALUES(3, 'mobilă');
 INSERT INTO category VALUES(4, 'electrocasnice');
-INSERT INTO category VALUES(5, 'scule si unelte');
-INSERT INTO category VALUES(6, 'gradina');
+INSERT INTO category VALUES(5, 'scule și unelte');
+INSERT INTO category VALUES(6, 'grădină');
 INSERT INTO category VALUES(7, 'auto');
-INSERT INTO category VALUES(8, 'decoratiuni');
-INSERT INTO category VALUES(9, 'amenajari interioare');
-INSERT INTO category VALUES(10, 'gresie si fainata');
-INSERT INTO category VALUES(11, 'constructii');
+INSERT INTO category VALUES(8, 'decorațiuni');
+INSERT INTO category VALUES(9, 'amenajări interioare');
+INSERT INTO category VALUES(10, 'gresie si fainață');
+INSERT INTO category VALUES(11, 'construcții');
 INSERT INTO category VALUES(12, 'termice');
 INSERT INTO category VALUES(13, 'electrice');
 INSERT INTO category VALUES(14, 'sanitare');
@@ -25,7 +25,7 @@ INSERT INTO product(id, name, unit, price, category_id) VALUES(5, 'tigaie', 'buc
 
 -- Categoria baie
 INSERT INTO product(id, name, unit, price, category_id) VALUES(6, 'bideu', 'buc', 100.00, 2);
-INSERT INTO product(id, name, unit, price, category_id) VALUES(7, 'cabina dus', 'buc', 1600.00, 2);
+INSERT INTO product(id, name, unit, price, category_id) VALUES(7, 'cabina duș', 'buc', 1600.00, 2);
 INSERT INTO product(id, name, unit, price, category_id) VALUES(8, 'oglindă', 'buc', 159.00, 2);
 INSERT INTO product(id, name, unit, price, category_id) VALUES(9, 'dulap suspendat', 'buc', 350.00, 2);
 INSERT INTO product(id, name, unit, price, category_id) VALUES(10, 'capac wc', 'buc', 60.00, 2);

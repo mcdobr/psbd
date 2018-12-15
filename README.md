@@ -1,4 +1,10 @@
 # Shop management system
+
+Ca să meargă diacriticele în SQL Developer:
+```
+Preferences>Environment>Encoding>UTF-8
+```
+
 Example request body for POST on /api/bill
 ```
 {
