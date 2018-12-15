@@ -29,7 +29,7 @@ async function createNewBill() {
 }
 
 async function post(req, res, next) {
-    const binds = {
+    const billBinds = {
         returnedBillId: {
             dir: oracledb.BIND_OUT,
             type: oracledb.NUMBER
@@ -54,12 +54,25 @@ async function post(req, res, next) {
     let conn;
     try {
         conn = await oracledb.getConnection();
-        let result = await conn.execute(`BEGIN :returnedBillId := new_bill(:billDate, :otherPartyName, :billType); END;`, binds);
 
-        conn.commit();
+        let result = await conn.execute(`BEGIN :returnedBillId := new_bill(:billDate, :otherPartyName, :billType); END;`, billBinds);
+        await conn.commit();
+
+        let billId = result.outBinds.returnedBillId;
+        for (const billedItem of req.body.billedItems) {
+            const billedItemBinds = {
+                billId: billId,
+                productId: billedItem.productId,
+                quantity: billedItem.quantity
+            };
+            await conn.execute(`BEGIN new_bill_item(:billId, :productId, :quantity); END;`, billedItemBinds);
+        }
+        
+        await conn.commit();
         res.status(200).json(result);
     } catch (error) {
         console.error(error);
+        conn.rollback();
         res.status(400).end();
         next(error);
     } finally {
