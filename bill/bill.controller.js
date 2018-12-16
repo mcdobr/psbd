@@ -15,8 +15,19 @@ async function find(context) {
 
     query += `\nORDER BY billdate DESC`;
 
-    const result = await database.simpleExecute(query, binds);
-    return result.rows;
+    const billsResult = await database.simpleExecute(query, binds);
+
+    const itemsOfBillQuery = 
+        `SELECT billItem.id, billItem.quantity, billItem.product_id
+        FROM billItem
+        WHERE billItem.bill_id = :bill_id`;
+
+    for (let bill of billsResult.rows) {
+        const itemsResult = await database.simpleExecute(itemsOfBillQuery, {bill_id: bill.ID});
+        bill.items = itemsResult.rows;
+    }
+
+    return billsResult.rows;
 }
 
 async function get(req, res, next) {

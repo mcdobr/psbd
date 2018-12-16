@@ -53,6 +53,8 @@ CREATE OR REPLACE PROCEDURE new_bill_item(
     
     v_previous_stock billItem.new_stock%type;
     v_new_stock billItem.new_stock%type;
+
+    v_stock_difference billItem.new_stock%type;
 BEGIN
     /* Get the referenced bill */
     SELECT * INTO v_bill
@@ -62,18 +64,19 @@ BEGIN
     /* Check if there are any previous bills that list the product */
     SELECT COUNT(*)
     INTO v_previous_bills_count
-    FROM billItem, bill
-    WHERE billItem.bill_id = bill.id AND 
-        billItem.product_id = v_productId;
+    FROM billItem
+    INNER JOIN bill ON billItem.bill_id = bill.id
+    WHERE billItem.product_id = v_productId AND
+        bill.billdate < v_bill.billdate;
     
     /* Get LATEST PREVIOUS bill that has product listed */
     /* Only one transaction on the same timestamp */
     IF (v_previous_bills_count > 0) THEN
         SELECT billItem.new_stock, bill.id
         INTO v_previous_stock, v_previous_bill_id
-        FROM billItem, bill
-        WHERE billItem.bill_id = bill.id AND
-            billItem.product_id = v_productId AND
+        FROM billItem
+        INNER JOIN bill ON billItem.bill_id = bill.id
+        WHERE billItem.product_id = v_productId AND
             bill.billdate = (SELECT MAX(billdate)
                             FROM bill
                             WHERE billdate < v_bill.billdate)
@@ -86,13 +89,47 @@ BEGIN
     /* Compute the new stock */
     IF (v_bill.billtype = 'incoming') THEN
         v_new_stock := v_previous_stock + v_quantity;
+        v_stock_difference := v_quantity;
     ELSIF (v_bill.billtype = 'outgoing') THEN
         v_new_stock := v_previous_stock - v_quantity;
+        v_stock_difference := -v_quantity;
     END IF;    
     DBMS_OUTPUT.put_line('New stock: ' || v_new_stock);
     
     INSERT INTO billItem VALUES(default, v_quantity, v_billId, v_productId, v_new_stock);
+
+
+    /* Propagate the stock change in later transactions */
+    update_newer_bills(v_billId, v_stock_difference, v_productId);
 END new_bill_item;
 /
 
-EXECUTE new_bill_item(2, 1, 3);
+CREATE OR REPLACE PROCEDURE update_newer_bills(
+    v_updated_bill_id IN bill.id%type,
+    v_stock_difference IN billItem.quantity%type,
+    v_product_id IN product.id%type
+)
+IS
+    v_count_later_bills NUMBER;
+
+    /* Get all bill items with the product that appear on bills later than updated bill */
+    CURSOR later_bill_item_cursor IS
+        SELECT billItem.*
+        FROM billItem
+        INNER JOIN bill ON billItem.bill_id = bill.id
+        WHERE product_id = v_product_id AND
+            bill.billdate > (SELECT billdate
+                            FROM bill
+                            WHERE bill.id = v_updated_bill_id);
+        
+BEGIN
+    FOR later_bill_item_record IN later_bill_item_cursor
+    LOOP
+        UPDATE billItem
+        SET billItem.new_stock = billItem.new_stock + v_stock_difference
+        WHERE billItem.id = later_bill_item_record.id;
+    END LOOP;
+    
+    /* TODO: Exception for not found*/
+END;
+/
