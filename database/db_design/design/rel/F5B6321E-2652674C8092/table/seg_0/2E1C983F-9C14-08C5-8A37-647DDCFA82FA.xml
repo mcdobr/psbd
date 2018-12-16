@@ -19,7 +19,7 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="billdate" id="F608E40A-03ED-0572-2BC5-F768ED962A91">
+<Column name="bill_date" id="F608E40A-03ED-0572-2BC5-F768ED962A91">
 <createdBy>mircea</createdBy>
 <createdTime>2018-11-05 16:33:27 UTC</createdTime>
 <generatorID>6B92B044-A504-B897-60F1-595830971644</generatorID>
@@ -30,7 +30,7 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="otherPartyName" id="316D7CC1-6271-4192-12B9-F5F672544711">
+<Column name="other_party_name" id="316D7CC1-6271-4192-12B9-F5F672544711">
 <createdBy>mircea</createdBy>
 <createdTime>2018-11-05 16:33:27 UTC</createdTime>
 <generatorID>EDAEBC95-6C33-8670-2EDD-E6A082F907A8</generatorID>
@@ -43,15 +43,20 @@
 <ownDataTypeParameters>50,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="billtype" id="6F96E023-259A-7E1C-BFC3-3E5FF5F8E438">
+<Column name="bill_type" id="6F96E023-259A-7E1C-BFC3-3E5FF5F8E438">
 <createdBy>mircea</createdBy>
 <createdTime>2018-11-05 16:33:27 UTC</createdTime>
 <generatorID>EAF1E27D-1474-B16F-0220-653E4A358CDC</generatorID>
 <ownerDesignName>design</ownerDesignName>
+<constraintName>ck_valid_bill_type</constraintName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
 <dataTypeSize>20</dataTypeSize>
+<listOfValues>
+<valueDef value="incoming" description=""/>
+<valueDef value="outgoing" description=""/>
+</listOfValues>
 <ownDataTypeParameters>20,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>

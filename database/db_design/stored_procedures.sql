@@ -24,13 +24,13 @@ END;
 /
 
 CREATE OR REPLACE FUNCTION new_bill
-(v_billdate IN VARCHAR2,
- v_otherpartyname IN bill.otherpartyname%type,
- v_billtype IN bill.billtype%type)
+(v_bill_date IN VARCHAR2,
+ v_other_party_name IN bill.other_party_name%type,
+ v_bill_type IN bill.bill_type%type)
 RETURN bill.id%type IS
     v_billId bill.id%type;
 BEGIN
-    INSERT INTO bill VALUES(default, TO_DATE(v_billdate, 'yyyy/mm/dd'), v_otherpartyname, v_billtype);
+    INSERT INTO bill VALUES(default, TO_DATE(v_bill_date, 'yyyy/mm/dd'), v_other_party_name, v_bill_type);
     
     SELECT MAX(id) INTO v_billId
     FROM bill;
@@ -67,7 +67,7 @@ BEGIN
     FROM billItem
     INNER JOIN bill ON billItem.bill_id = bill.id
     WHERE billItem.product_id = v_productId AND
-        bill.billdate < v_bill.billdate;
+        bill.bill_date < v_bill.bill_date;
     
     /* Get LATEST PREVIOUS bill that has product listed */
     /* Only one transaction on the same timestamp */
@@ -77,20 +77,20 @@ BEGIN
         FROM billItem
         INNER JOIN bill ON billItem.bill_id = bill.id
         WHERE billItem.product_id = v_productId AND
-            bill.billdate = (SELECT MAX(billdate)
+            bill.bill_date = (SELECT MAX(bill_date)
                             FROM bill
-                            WHERE billdate < v_bill.billdate)
-        ORDER BY bill.billdate DESC;
+                            WHERE bill_date < v_bill.bill_date)
+        ORDER BY bill.bill_date DESC;
     END IF;    
     
     v_previous_stock := NVL(v_previous_stock, 0);
     DBMS_OUTPUT.put_line('Previous stock: ' || v_previous_stock);
     
     /* Compute the new stock */
-    IF (v_bill.billtype = 'incoming') THEN
+    IF (v_bill.bill_type = 'incoming') THEN
         v_new_stock := v_previous_stock + v_quantity;
         v_stock_difference := v_quantity;
-    ELSIF (v_bill.billtype = 'outgoing') THEN
+    ELSIF (v_bill.bill_type = 'outgoing') THEN
         v_new_stock := v_previous_stock - v_quantity;
         v_stock_difference := -v_quantity;
     END IF;    
@@ -118,7 +118,7 @@ IS
         FROM billItem
         INNER JOIN bill ON billItem.bill_id = bill.id
         WHERE product_id = v_product_id AND
-            bill.billdate > (SELECT billdate
+            bill.bill_date > (SELECT bill_date
                             FROM bill
                             WHERE bill.id = v_updated_bill_id);
         
@@ -131,5 +131,5 @@ BEGIN
     END LOOP;
     
     /* TODO: Exception for not found*/
-END;
+END update_newer_bills;
 /

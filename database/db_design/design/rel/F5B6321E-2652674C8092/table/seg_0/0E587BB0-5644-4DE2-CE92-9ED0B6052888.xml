@@ -25,9 +25,13 @@
 <createdTime>2018-11-05 16:33:27 UTC</createdTime>
 <generatorID>6B77E86E-15CC-EA9D-9CD4-0D2B156999D2</generatorID>
 <ownerDesignName>design</ownerDesignName>
+<constraintName>ck_valid_billed_quantity</constraintName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>
+<checkConstraint>
+<implementationDef dbType="Generic Constraint" definition="quantity &gt; 0"/>
+</checkConstraint>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
