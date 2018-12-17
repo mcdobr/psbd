@@ -2,18 +2,17 @@ const oracledb = require('oracledb');
 const express = require('express');
 const config = require('./config.js');
 const bodyParser = require('body-parser');
-const app = express();
 const database = require('./database/database.js');
-
-
+const mung = require('express-mung');
+const app = express();
 const bills = require('./bill');
 const category = require('./category/category.route');
-// const historicQuantites = require('./historicQuantity');
 const product = require('./product');
 
 app.use(bodyParser.json({
 
 }));
+
 oracledb.createPool(
     config.db,
     function (error, pool) {
@@ -30,10 +29,16 @@ oracledb.createPool(
 
 
             app.use('/api', category, product, bills);
-
-            //app.use('/api/historicquantities', historicQuantites);
+            
         }
     }   
 );
+
+function redactJsonResponse(body, req, res) {
+    const camelCaseKeys = require('camelcase-keys');
+    return camelCaseKeys(body, {deep: true});
+}
+
+app.use(mung.json(redactJsonResponse));
 
 app.listen(config.port);

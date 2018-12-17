@@ -3,7 +3,7 @@ const oracledb = require('oracledb');
 
 async function find(context) {
     const baseQuery = 
-        `SELECT id, billdate, otherPartyName, billtype 
+        `SELECT id, bill_date, other_party_name, bill_type 
         FROM bill`;
 
     let query = baseQuery;
@@ -13,7 +13,7 @@ async function find(context) {
         query += `\nWHERE id = :id`;
     }
 
-    query += `\nORDER BY billdate DESC`;
+    query += `\nORDER BY bill_date DESC`;
 
     const billsResult = await database.simpleExecute(query, binds);
 

@@ -24,7 +24,9 @@
   "homepage": "https://github.com/mcdobr/psbd#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "camelcase-keys": "^5.0.0",
     "express": "^4.16.4",
+    "express-mung": "^0.5.1",
     "oracledb": "^3.0.0"
   },
   "devDependencies": {
