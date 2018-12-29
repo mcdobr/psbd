@@ -38,4 +38,8 @@ function redactJsonResponse(body, req, res) {
 
 app.use(mung.json(redactJsonResponse));
 
-app.listen(config.port);
+const server = app.listen(config.port, () => {
+    console.log('Server listenting on port ' + server.address().port + '...');
+});
+
+module.exports = server;
