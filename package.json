@@ -27,7 +27,8 @@
     "camelcase-keys": "^5.0.0",
     "express": "^4.16.4",
     "express-mung": "^0.5.1",
-    "oracledb": "^3.0.0"
+    "oracledb": "^3.0.0",
+    "request": "^2.88.0"
   },
   "devDependencies": {
     "jasmine": "^3.3.1",
