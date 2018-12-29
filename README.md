@@ -1,5 +1,9 @@
 # Shop management system
 
+[![Build Status](https://travis-ci.com/mcdobr/psbd.svg?branch=master)](https://travis-ci.com/mcdobr/psbd)
+
+![License](https://img.shields.io/github/license/mcdobr/psbd.svg)
+
 Ca să meargă diacriticele în SQL Developer:
 ```
 Preferences>Environment>Encoding>UTF-8

@@ -2,7 +2,6 @@ const oracledb = require('oracledb');
 const express = require('express');
 const config = require('./config.js');
 const bodyParser = require('body-parser');
-const database = require('./database/database.js');
 const mung = require('express-mung');
 const app = express();
 const bills = require('./bill');
@@ -15,7 +14,7 @@ app.use(bodyParser.json({
 
 oracledb.createPool(
     config.db,
-    function (error, pool) {
+    (error, pool) => {
         if (error) {
             console.error(error.message);
             pool.close((error) => {
@@ -27,9 +26,7 @@ oracledb.createPool(
             console.log('Connected to Oracle Database');
             console.log('Maximum pool listeners: ' + pool.getMaxListeners());
 
-
-            app.use('/api', category, product, bills);
-            
+            app.use('/api', category, product, bills);            
         }
     }   
 );
