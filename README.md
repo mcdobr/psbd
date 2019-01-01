@@ -12,7 +12,7 @@ Preferences>Environment>Encoding>UTF-8
 Example request body for POST on /api/bill
 ```
 {
-    "billDate": "2018/08/05",
+    	"billDate": "2018/08/05",
 	"otherPartyName": "Mircea Dobreanu",
 	"billType": "incoming",
 	"billedItems": [
