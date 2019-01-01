@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "nodemon server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jasmine"
   },
   "repository": {
     "type": "git",
@@ -24,10 +24,14 @@
   "homepage": "https://github.com/mcdobr/psbd#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "camelcase-keys": "^5.0.0",
     "express": "^4.16.4",
-    "oracledb": "^3.0.0"
+    "express-mung": "^0.5.1",
+    "oracledb": "^3.0.0",
+    "request": "^2.88.0"
   },
   "devDependencies": {
+    "jasmine": "^3.3.1",
     "nodemon": "^1.18.7"
   }
 }

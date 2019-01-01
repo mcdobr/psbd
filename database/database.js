@@ -42,9 +42,7 @@ function simpleExecute(statement, binds = [], opts = {}) {
  */
 async function get(find, req, res, next) {
     try {
-        const context = {};
-        context.id = parseInt(req.params.id, 10);
-
+        let context = {...req.query, ...req.params};
         const rows = await find(context);
         if (req.params.id) {
             if (rows.length === 1) {
