@@ -9,10 +9,10 @@ Ca să meargă diacriticele în SQL Developer:
 Preferences>Environment>Encoding>UTF-8
 ```
 
-Example request body for POST on /api/bill
+Example request body for POST on /api/bills
 ```
 {
-    "billDate": "2018/08/05",
+    	"billDate": "2018/08/05",
 	"otherPartyName": "Mircea Dobreanu",
 	"billType": "incoming",
 	"billedItems": [
