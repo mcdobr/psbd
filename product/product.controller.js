@@ -2,7 +2,7 @@ const database = require('../database/database');
 
 async function find(context) {
     const baseQuery = 
-        `SELECT id, name, unit, price, category_id
+        `SELECT id, name, unit, price, category_id, stock
         FROM product`;
 
     let query = baseQuery;
