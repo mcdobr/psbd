@@ -1,5 +1,6 @@
 const database = require('../database/database');
 const oracledb = require('oracledb');
+const moment = require('moment');
 
 async function find(context) {
     const baseQuery = 
@@ -40,6 +41,12 @@ async function createNewBill() {
 }
 
 async function post(req, res, next) {
+
+    const formattedBillDate = moment(req.body.billDate).format('YYYY/MM/DD hh:mm:ss');
+    console.log(req.body.billDate);
+    console.log(typeof req.body.billDate);
+    console.log(formattedBillDate);
+
     const billBinds = {
         returnedBillId: {
             dir: oracledb.BIND_OUT,
@@ -48,7 +55,7 @@ async function post(req, res, next) {
         billDate: {
             dir: oracledb.BIND_IN,
             type: oracledb.STRING,
-            val: req.body.billDate
+            val: formattedBillDate
         },
         otherPartyName: {
             dir: oracledb.BIND_IN,

@@ -29,7 +29,7 @@ v_bill_type IN bill.bill_type%type)
 RETURN bill.id%type IS
    v_billId bill.id%type;
 BEGIN
-   INSERT INTO bill VALUES(default, TO_DATE(v_bill_date, 'yyyy/mm/dd'), v_other_party_name, v_bill_type);
+   INSERT INTO bill VALUES(default, TO_DATE(v_bill_date, 'yyyy/mm/dd hh24:mi:ss'), v_other_party_name, v_bill_type);
    
    SELECT MAX(id) INTO v_billId
    FROM bill;

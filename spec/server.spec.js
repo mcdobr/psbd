@@ -53,7 +53,7 @@ describe('Endpoints', () => {
 
     describe('POST /api/bills', () => {
         const postBody = {
-            "billDate": "2018/08/23",
+            "billDate": "2019-01-03T16:09:12.032Z",
             "otherPartyName": "Mircea Dobreanu",
             "billType": "incoming",
             "billedItems": [
