@@ -5,7 +5,9 @@
   "main": "server.js",
   "scripts": {
     "start": "nodemon server.js",
-    "test": "jasmine"
+    "test": "jasmine",
+    "db_setup": "node setup.js",
+    "db_clean": "node clean.js"
   },
   "repository": {
     "type": "git",

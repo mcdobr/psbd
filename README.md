@@ -9,6 +9,12 @@ Ca să meargă diacriticele în SQL Developer:
 Preferences>Environment>Encoding>UTF-8
 ```
 
+Pentru reinițializarea bazei de date și recompilare proceduri stocate și altele
+```
+npm run db_clean
+npm run db_setup
+```
+
 Example request body for POST on /api/bills
 ```
 {
