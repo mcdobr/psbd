@@ -38,6 +38,55 @@ BEGIN
 END new_bill;
 /
 
+-- This function changes newer bills' stock and also propagates the latest stock to
+-- the product table
+
+CREATE OR REPLACE PROCEDURE update_newer_bills(
+   v_updated_bill_id IN bill.id%type,
+   v_stock_difference IN billItem.quantity%type,
+   v_product_id IN product.id%type
+)
+IS
+   v_count_later_bills NUMBER;
+   v_latest_stock product.stock%type;
+   
+   
+   -- Get all bill items with the product that appear on bills later than updated bill
+   CURSOR later_bill_item_cursor IS
+       SELECT billItem.*
+       FROM billItem
+       INNER JOIN bill ON billItem.bill_id = bill.id
+       WHERE product_id = v_product_id AND
+           bill.bill_date > (SELECT bill_date
+                           FROM bill
+                           WHERE bill.id = v_updated_bill_id);
+       
+BEGIN
+   -- Update the historical stocks
+   FOR later_bill_item_record IN later_bill_item_cursor LOOP
+       UPDATE billItem
+       SET billItem.new_stock = billItem.new_stock + v_stock_difference
+       WHERE billItem.id = later_bill_item_record.id;      
+   END LOOP;
+   
+    -- Get the stock of the billitem of the bill that doesn't have a later bill AKA THE LATEST ONE
+   SELECT billItem.new_stock
+   INTO v_latest_stock
+   FROM billItem
+   INNER JOIN bill b1 ON billItem.bill_id = b1.id
+   WHERE billItem.product_id = v_product_id AND 
+       NOT EXISTS (SELECT bill.*
+                   FROM bill b2
+                   WHERE b2.bill_date > b1.bill_date);
+
+   UPDATE product
+   SET stock = v_latest_stock
+   WHERE product.id = v_product_id;
+   
+   -- TODO: Exception for not found
+END update_newer_bills;
+/
+
 -- Creates new bill item
 
 CREATE OR REPLACE PROCEDURE new_bill_item(
@@ -100,53 +149,4 @@ BEGIN
    -- Propagate the stock change in later transactions
    update_newer_bills(v_billId, v_stock_difference, v_productId);
 END new_bill_item;
-/
-
--- This function changes newer bills' stock and also propagates the latest stock to
--- the product table
-
-CREATE OR REPLACE PROCEDURE update_newer_bills(
-   v_updated_bill_id IN bill.id%type,
-   v_stock_difference IN billItem.quantity%type,
-   v_product_id IN product.id%type
-)
-IS
-   v_count_later_bills NUMBER;
-   v_latest_stock product.stock%type;
-   
-   
-   -- Get all bill items with the product that appear on bills later than updated bill
-   CURSOR later_bill_item_cursor IS
-       SELECT billItem.*
-       FROM billItem
-       INNER JOIN bill ON billItem.bill_id = bill.id
-       WHERE product_id = v_product_id AND
-           bill.bill_date > (SELECT bill_date
-                           FROM bill
-                           WHERE bill.id = v_updated_bill_id);
-       
-BEGIN
-   -- Update the historical stocks
-   FOR later_bill_item_record IN later_bill_item_cursor LOOP
-       UPDATE billItem
-       SET billItem.new_stock = billItem.new_stock + v_stock_difference
-       WHERE billItem.id = later_bill_item_record.id;      
-   END LOOP;
-   
-    -- Get the stock of the billitem of the bill that doesn't have a later bill AKA THE LATEST ONE
-   SELECT billItem.new_stock
-   INTO v_latest_stock
-   FROM billItem
-   INNER JOIN bill b1 ON billItem.bill_id = b1.id
-   WHERE billItem.product_id = v_product_id AND 
-       NOT EXISTS (SELECT bill.*
-                   FROM bill b2
-                   WHERE b2.bill_date > b1.bill_date);
-
-   UPDATE product
-   SET stock = v_latest_stock
-   WHERE product.id = v_product_id;
-   
-   -- TODO: Exception for not found
-END update_newer_bills;
 /
