@@ -19,8 +19,9 @@ async function find(context) {
     const billsResult = await database.simpleExecute(query, binds);
 
     const itemsOfBillQuery = 
-        `SELECT billItem.id, billItem.quantity, billItem.product_id
+        `SELECT billItem.id, billItem.quantity, billItem.product_id, product.name
         FROM billItem
+        INNER JOIN product ON billItem.product_id = product.id
         WHERE billItem.bill_id = :bill_id`;
 
     for (let bill of billsResult.rows) {
