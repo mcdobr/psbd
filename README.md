@@ -1,7 +1,7 @@
 # Shop management system
 
 [![Build Status](https://travis-ci.com/mcdobr/psbd.svg?branch=master)](https://travis-ci.com/mcdobr/psbd)
-[![License]](https://img.shields.io/github/license/mcdobr/psbd.svg)
+[![License]()](https://img.shields.io/github/license/mcdobr/psbd.svg)
 
 Ca să meargă diacriticele în SQL Developer:
 ```
@@ -17,7 +17,7 @@ npm run db_setup
 Example request body for POST on /api/bills
 ```
 {
-    	"billDate": "2018/08/05",
+    "billDate": "2019-01-03T16:09:12.032Z",
 	"otherPartyName": "Mircea Dobreanu",
 	"billType": "incoming",
 	"billedItems": [
