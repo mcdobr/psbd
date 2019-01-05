@@ -12,8 +12,7 @@ describe('Endpoints', () => {
     afterAll(() => {
         console.log('Closing test server');
         server.close();
-    });*/
-
+    });*/ 
 
     describe('GET /', () => {
         let responseData = {};
@@ -31,29 +30,9 @@ describe('Endpoints', () => {
     });
 
 
-    describe('GET /api/bills', () => {
-        const responseData = {};
-        beforeAll((done) => {
-            request({
-                method: 'GET',
-                uri: 'http://localhost:10000/api/bills'
-            }, (error, response, body) => {
-                responseData.error = error;
-                responseData.response = response;
-                responseData.body = body;
-                done();
-            });
-        });
-
-        it ('Status 200 OK', () => {
-            expect(responseData.response.statusCode).toBe(200);
-        });
-    });
-
-
-    describe('POST /api/bills', () => {
+    describe('Bill endpoints', () => {
         const postBody = {
-            "billDate": "2019-01-03T16:09:12.032Z",
+            "billDate": "2019-01-03T16:09:13.032Z",
             "otherPartyName": "Mircea Dobreanu",
             "billType": "incoming",
             "billedItems": [
@@ -72,28 +51,73 @@ describe('Endpoints', () => {
             ]
         };
 
-        let responseData = {};
-        beforeAll((done) => {
-            request({
-                method: 'POST',
-                uri: 'http://localhost:10000/api/bills',
-                json: true,
-                body: postBody
-            }, (error, response, body) => {
+        describe('GET /api/bills', () => {
+            const responseData = {};
+            beforeAll((done) => {
+                request({
+                    method: 'GET',
+                    uri: 'http://localhost:10000/api/bills'
+                }, (error, response, body) => {
+                    responseData.error = error;
+                    responseData.response = response;
+                    responseData.body = body;
+                    done();
+                });
+            });
 
-                responseData.error = error;
-                responseData.response = response;
-                responseData.body = body;
-                done();
+            it ('Status 200 OK', () => {
+                expect(responseData.response.statusCode).toBe(200);
             });
         });
 
-        it('Status 200 OK', () => {
-            expect(responseData.response.statusCode).toBe(200);
+
+        describe('POST /api/bills', () => {
+            let responseData = {};
+            beforeAll((done) => {
+                request({
+                    method: 'POST',
+                    uri: 'http://localhost:10000/api/bills',
+                    json: true,
+                    body: postBody
+                }, (error, response, body) => {
+
+                    responseData.error = error;
+                    responseData.response = response;
+                    responseData.body = body;
+                    done();
+                });
+            });
+
+            it('Status 201 Created', () => {
+                expect(responseData.response.statusCode).toBe(201);
+            });
+
+            it ('Body is json', () => {
+                expect(typeof responseData.body).toBe('object');
+            });
         });
 
-        it ('Body is json', () => {
-            expect(typeof responseData.body).toBe('object');
+        describe('PUT /api/bills/:id', () => {
+            beforeAll((done) => {                
+                request({
+                    method: 'POST',
+                    uri: 'http://localhost:10000/api/bills',
+                    json: true,
+                    body: postBody
+                }, (error, response, body) => {});
+
+                request({
+                    method: 'PUT',
+                    uri: 'http://localhost:10000/api/bills/1'
+                }, (error, response, body) => {
+                    responseData = {error: error, response: response, body: body};
+                    done();
+                });
+            });
+
+            it ('Status 204 No Content', () => {
+                expect(responseData.response.status).toBe(204);
+            });
         });
     });
 });

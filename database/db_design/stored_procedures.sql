@@ -22,8 +22,8 @@ BEGIN
 END;
 /
 
-CREATE OR REPLACE FUNCTION new_bill
-(v_bill_date IN VARCHAR2,
+CREATE OR REPLACE FUNCTION new_bill(
+v_bill_date IN VARCHAR2,
 v_other_party_name IN bill.other_party_name%type,
 v_bill_type IN bill.bill_type%type)
 RETURN bill.id%type IS
@@ -38,6 +38,31 @@ BEGIN
 END new_bill;
 /
 
+-- This procedure changes the requested bill (ONLY THE BILL ROW)
+CREATE OR REPLACE PROCEDURE edit_bill(
+    v_bill_id IN bill.id%type,
+    v_bill_date IN VARCHAR2,
+    v_other_party_name IN bill.other_party_name%type,
+    v_bill_type IN bill.bill_type%type)
+IS
+BEGIN
+    UPDATE bill
+    SET bill.bill_date = TO_DATE(v_bill_date, 'yyyy/mm/dd hh24:mi:ss'), bill.other_party_name = v_other_party_name, bill.bill_type = v_bill_type
+    WHERE bill.id = v_bill_id;
+END edit_bill;
+/
+
+
+CREATE OR REPLACE PROCEDURE delete_bill_items(
+    v_bill_id IN bill.id%type
+)
+IS
+BEGIN
+    DELETE billItem
+    WHERE billItem.bill_id = v_bill_id;
+END delete_bill_items;
+/
+
 -- This function changes newer bills' stock and also propagates the latest stock to
 -- the product table
 
@@ -47,13 +72,11 @@ CREATE OR REPLACE PROCEDURE update_newer_bills(
    v_product_id IN product.id%type
 )
 IS
-   v_count_later_bills NUMBER;
    v_latest_stock product.stock%type;
-   
    
    -- Get all bill items with the product that appear on bills later than updated bill
    CURSOR later_bill_item_cursor IS
-       SELECT billItem.*
+       SELECT billItem.*, bill.bill_date
        FROM billItem
        INNER JOIN bill ON billItem.bill_id = bill.id
        WHERE product_id = v_product_id AND
@@ -62,11 +85,15 @@ IS
                            WHERE bill.id = v_updated_bill_id);
        
 BEGIN
-   -- Update the historical stocks
+    --Update the later bill items
    FOR later_bill_item_record IN later_bill_item_cursor LOOP
-       UPDATE billItem
-       SET billItem.new_stock = billItem.new_stock + v_stock_difference
-       WHERE billItem.id = later_bill_item_record.id;      
+        UPDATE billItem
+        SET billItem.new_stock = billItem.quantity + NVL((SELECT SUM(billItem.quantity)
+                                                        FROM billItem
+                                                        INNER JOIN bill ON billItem.bill_id = bill.id
+                                                        WHERE bill.bill_date < later_bill_item_record.bill_date AND
+                                                            billItem.product_id = later_bill_item_record.product_id), 0)
+        WHERE billItem.id = later_bill_item_record.id;     
    END LOOP;
    
     -- Get the stock of the billitem of the bill that doesn't have a later bill AKA THE LATEST ONE

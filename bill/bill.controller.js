@@ -35,17 +35,8 @@ async function get(req, res, next) {
     database.get(find, req, res, next);
 }
 
-
-async function createNewBill() {
-
-}
-
-async function post(req, res, next) {
-
+async function createNewBill(req, res, next) {
     const formattedBillDate = moment(req.body.billDate).format('YYYY/MM/DD hh:mm:ss');
-    console.log(req.body.billDate);
-    console.log(typeof req.body.billDate);
-    console.log(formattedBillDate);
 
     const billBinds = {
         returnedBillId: {
@@ -72,9 +63,7 @@ async function post(req, res, next) {
     let conn;
     try {
         conn = await oracledb.getConnection();
-
         let result = await conn.execute(`BEGIN :returnedBillId := new_bill(:billDate, :otherPartyName, :billType); END;`, billBinds);
-        await conn.commit();
 
         let billId = result.outBinds.returnedBillId;
         for (const billedItem of req.body.billedItems) {
@@ -87,7 +76,72 @@ async function post(req, res, next) {
         }
         
         await conn.commit();
-        res.status(200).json(result);
+        res.status(201).json(result);
+    } catch (error) {
+        console.error(error);
+        conn.rollback();
+        res.status(400).end();
+        next(error);
+    } finally {
+        if (conn) {
+            try {
+                await conn.close();
+            } catch (error) {
+                console.error(error);
+            }
+        }
+    }
+}
+
+async function editBill(req, res, next) {
+    const formattedBillDate = moment(req.body.billDate).format('YYYY/MM/DD hh:mm:ss');
+
+    console.log(formattedBillDate);
+
+    req.params.id = parseInt(req.params.id, 10);
+    const editBinds = {
+        billId: {
+            dir: oracledb.BIND_IN,
+            type: oracledb.NUMBER,
+            val: req.params.id
+        },
+        billDate: {
+            dir: oracledb.BIND_IN,
+            type: oracledb.STRING,
+            val: formattedBillDate
+        },
+        otherPartyName: {
+            dir: oracledb.BIND_IN,
+            type: oracledb.STRING,
+            val: req.body.otherPartyName
+        },
+        billType: {
+            dir: oracledb.BIND_IN,
+            type: oracledb.STRING,
+            val: req.body.billType
+        }
+    };
+
+    let conn;
+    try {
+        conn = await oracledb.getConnection();
+        
+        
+        await conn.execute(`BEGIN edit_bill(:billId, :billDate, :otherPartyName, :billType); END;`, editBinds);
+        
+        console.log('before delete old bill items');
+        await conn.execute(`BEGIN delete_bill_items(:billId); END;`, { billId: req.params.id });
+        
+        for (const billedItem of req.body.billedItems) {
+            const billedItemBinds = {
+                billId: req.params.id,
+                productId: billedItem.productId,
+                quantity: billedItem.quantity
+            };
+            await conn.execute(`BEGIN new_bill_item(:billId, :productId, :quantity); END;`, billedItemBinds);
+        }
+        await conn.commit();
+        res.status(204).end();
     } catch (error) {
         console.error(error);
         conn.rollback();
@@ -105,4 +159,5 @@ async function post(req, res, next) {
 }
 
 module.exports.get = get;
-module.exports.post = post;
+module.exports.post = createNewBill;
+module.exports.put = editBill;
