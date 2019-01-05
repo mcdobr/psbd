@@ -84,6 +84,22 @@
 <colAssociation fkAssociation="4D357C20-9A0C-F1B1-72D2-D17A3F45F11A" referredColumn="A613E9F2-77F5-EDE6-3CEF-1F1883B4A09A"/>
 </associations>
 </Column>
+<Column name="stock" id="1F453869-9E21-A776-F18F-1C874208C203">
+<createdBy>mircea</createdBy>
+<createdTime>2019-01-02 14:02:18 UTC</createdTime>
+<ownerDesignName>design</ownerDesignName>
+<constraintName>ck_product_stock_positive</constraintName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<checkConstraint>
+<implementationDef dbType="Generic Constraint" definition="stock &gt;= 0"/>
+</checkConstraint>
+<defaultValue>0</defaultValue>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<defaultOntNull>true</defaultOntNull>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="53B38875-7E1F-38C6-9721-AFD4A01054E9" name="product_PK">

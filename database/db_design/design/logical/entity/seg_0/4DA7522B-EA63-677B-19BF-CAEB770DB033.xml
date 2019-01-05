@@ -99,6 +99,24 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
+<Attribute name="stock" id="B01039BA-D5F9-E6F5-860A-5849A7550106">
+<createdBy>mircea</createdBy>
+<createdTime>2019-01-02 14:03:24 UTC</createdTime>
+<generatorID>1F453869-9E21-A776-F18F-1C874208C203</generatorID>
+<ownerDesignName>design</ownerDesignName>
+<engineerTo>
+<item key="F5B6321E-F341-2A2F-4CB7-2652674C8092" value="true"/>
+</engineerTo>
+<constraintName>ck_product_stock_positive</constraintName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<checkConstraint>
+<implementationDef dbType="Generic Constraint" definition="stock &gt;= 0"/>
+</checkConstraint>
+<defaultValue>0</defaultValue>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
 <identifier id="E939247D-50D5-F51B-BEEA-956E8F2C82CC" name="product PK">
