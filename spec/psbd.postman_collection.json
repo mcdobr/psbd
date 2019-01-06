@@ -1,0 +1,269 @@
+{
+	"info": {
+		"_postman_id": "f315454c-3cb2-4c1b-a665-8d474e2bc23d",
+		"name": "psbd",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "List bills",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:10000/api/bills",
+					"host": [
+						"localhost"
+					],
+					"port": "10000",
+					"path": [
+						"api",
+						"bills"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:10000/api/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "10000",
+					"path": [
+						"api",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create bills 1",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"billDate\": \"2019-01-01T16:09:14.032Z\",\r\n    \"otherPartyName\": \"Mircea Dobreanu\",\r\n    \"billType\": \"incoming\",\r\n    \"billedItems\": [\r\n        {\r\n            \"productId\": 1,\r\n            \"quantity\": 2\r\n        },\r\n        {\r\n            \"productId\": 2,\r\n            \"quantity\": 7\r\n        },\r\n        {\r\n            \"productId\": 3,\r\n            \"quantity\": 11\r\n        }\r\n    ]\r\n}"
+				},
+				"url": {
+					"raw": "localhost:10000/api/bills",
+					"host": [
+						"localhost"
+					],
+					"port": "10000",
+					"path": [
+						"api",
+						"bills"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create bills 2",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"billDate\": \"2019-01-02T16:09:14.032Z\",\r\n    \"otherPartyName\": \"Mircea Dobreanu\",\r\n    \"billType\": \"incoming\",\r\n    \"billedItems\": [\r\n        {\r\n            \"productId\": 1,\r\n            \"quantity\": 2\r\n        },\r\n        {\r\n            \"productId\": 2,\r\n            \"quantity\": 7\r\n        },\r\n        {\r\n            \"productId\": 3,\r\n            \"quantity\": 11\r\n        }\r\n    ]\r\n}"
+				},
+				"url": {
+					"raw": "localhost:10000/api/bills",
+					"host": [
+						"localhost"
+					],
+					"port": "10000",
+					"path": [
+						"api",
+						"bills"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create bills 3",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"billDate\": \"2019-01-03T16:09:14.032Z\",\r\n    \"otherPartyName\": \"Mircea Dobreanu\",\r\n    \"billType\": \"incoming\",\r\n    \"billedItems\": [\r\n        {\r\n            \"productId\": 1,\r\n            \"quantity\": 2\r\n        },\r\n        {\r\n            \"productId\": 2,\r\n            \"quantity\": 7\r\n        },\r\n        {\r\n            \"productId\": 3,\r\n            \"quantity\": 11\r\n        }\r\n    ]\r\n}"
+				},
+				"url": {
+					"raw": "localhost:10000/api/bills",
+					"host": [
+						"localhost"
+					],
+					"port": "10000",
+					"path": [
+						"api",
+						"bills"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create bills 4",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"billDate\": \"2019-01-04T16:09:14.032Z\",\r\n    \"otherPartyName\": \"Mircea Dobreanu\",\r\n    \"billType\": \"incoming\",\r\n    \"billedItems\": [\r\n        {\r\n            \"productId\": 1,\r\n            \"quantity\": 2\r\n        },\r\n        {\r\n            \"productId\": 2,\r\n            \"quantity\": 7\r\n        },\r\n        {\r\n            \"productId\": 3,\r\n            \"quantity\": 11\r\n        }\r\n    ]\r\n}"
+				},
+				"url": {
+					"raw": "localhost:10000/api/bills",
+					"host": [
+						"localhost"
+					],
+					"port": "10000",
+					"path": [
+						"api",
+						"bills"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Modify bill 1 WITH LARGE AMOUNTS",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"billDate\": \"2019-01-01T16:09:14.032Z\",\r\n    \"otherPartyName\": \"Mircea Dobreanu\",\r\n    \"billType\": \"incoming\",\r\n    \"billedItems\": [\r\n        {\r\n            \"productId\": 1,\r\n            \"quantity\": 100\r\n        },\r\n        {\r\n            \"productId\": 2,\r\n            \"quantity\": 200\r\n        },\r\n        {\r\n            \"productId\": 3,\r\n            \"quantity\": 300\r\n        }\r\n    ]\r\n}"
+				},
+				"url": {
+					"raw": "localhost:10000/api/bills/1",
+					"host": [
+						"localhost"
+					],
+					"port": "10000",
+					"path": [
+						"api",
+						"bills",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Modify bill 2 WITH LARGE AMOUNTS",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"billDate\": \"2019-01-02T16:09:14.032Z\",\r\n    \"otherPartyName\": \"Mircea Dobreanu\",\r\n    \"billType\": \"incoming\",\r\n    \"billedItems\": [\r\n        {\r\n            \"productId\": 1,\r\n            \"quantity\": 100\r\n        },\r\n        {\r\n            \"productId\": 2,\r\n            \"quantity\": 200\r\n        },\r\n        {\r\n            \"productId\": 3,\r\n            \"quantity\": 300\r\n        }\r\n    ]\r\n}"
+				},
+				"url": {
+					"raw": "localhost:10000/api/bills/2",
+					"host": [
+						"localhost"
+					],
+					"port": "10000",
+					"path": [
+						"api",
+						"bills",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Modify bill 3 WITH LARGE AMOUNTS",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"billDate\": \"2019-01-03T08:10:10.032Z\",\r\n    \"otherPartyName\": \"Mircea Dobreanu\",\r\n    \"billType\": \"outgoing\",\r\n    \"billedItems\": [\r\n        {\r\n            \"productId\": 1,\r\n            \"quantity\": 100\r\n        },\r\n        {\r\n            \"productId\": 2,\r\n            \"quantity\": 200\r\n        },\r\n        {\r\n            \"productId\": 3,\r\n            \"quantity\": 300\r\n        }\r\n    ]\r\n}"
+				},
+				"url": {
+					"raw": "localhost:10000/api/bills/3",
+					"host": [
+						"localhost"
+					],
+					"port": "10000",
+					"path": [
+						"api",
+						"bills",
+						"3"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

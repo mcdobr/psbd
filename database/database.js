@@ -22,15 +22,20 @@ function simpleExecute(statement, binds = [], opts = {}) {
         } catch (error) {
             reject(error);
         } finally {
-            if (conn) {
-                try {
-                    await conn.close();
-                } catch (error) {
-                    console.error(error);
-                }
-            }
+            tryToCloseConnection(conn);
         }
     });
+}
+
+async function tryToCloseConnection(conn)
+{
+    try {
+        if (conn) {
+            await conn.close();
+        }
+    } catch (error) {
+        console.error(error);
+    }
 }
 
 /**
@@ -58,5 +63,21 @@ async function get(find, req, res, next) {
     }
 }
 
-module.exports.simpleExecute = simpleExecute;
-module.exports.get = get;
+function getHumanReadableErrorMessage(error) {
+    let message;
+    switch (error.errorNum) {
+        case 2290:
+            message = 'Request leaves store with too few items to honor later requests or makes stock less than 0';
+            break;
+        default:
+            message = 'Invalid request';
+    }
+    return message;
+}
+
+module.exports = {
+    simpleExecute,
+    tryToCloseConnection,
+    get,
+    getHumanReadableErrorMessage
+};

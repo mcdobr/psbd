@@ -3,7 +3,7 @@ const oracledb = require('oracledb');
 const moment = require('moment');
 
 async function find(context) {
-    const baseQuery = 
+    const baseQuery =
         `SELECT id, bill_date, other_party_name, bill_type 
         FROM bill`;
 
@@ -18,14 +18,14 @@ async function find(context) {
 
     const billsResult = await database.simpleExecute(query, binds);
 
-    const itemsOfBillQuery = 
+    const itemsOfBillQuery =
         `SELECT billItem.id, billItem.quantity, billItem.product_id, product.name
         FROM billItem
         INNER JOIN product ON billItem.product_id = product.id
         WHERE billItem.bill_id = :bill_id`;
 
     for (let bill of billsResult.rows) {
-        const itemsResult = await database.simpleExecute(itemsOfBillQuery, {bill_id: bill.ID});
+        const itemsResult = await database.simpleExecute(itemsOfBillQuery, { bill_id: bill.ID });
         bill.items = itemsResult.rows;
     }
 
@@ -75,29 +75,21 @@ async function createNewBill(req, res, next) {
             };
             await conn.execute(`BEGIN new_bill_item(:billId, :productId, :quantity); END;`, billedItemBinds);
         }
-        
+
         await conn.commit();
         res.status(201).json(result);
     } catch (error) {
         console.error(error);
         conn.rollback();
-        res.status(400).end();
+        res.status(400).end(database.getHumanReadableErrorMessage(error));
         next(error);
     } finally {
-        if (conn) {
-            try {
-                await conn.close();
-            } catch (error) {
-                console.error(error);
-            }
-        }
+        database.tryToCloseConnection(conn);
     }
 }
 
 async function editBill(req, res, next) {
     const formattedBillDate = moment(req.body.billDate).format('YYYY/MM/DD hh:mm:ss');
-
-    console.log(formattedBillDate);
 
     req.params.id = parseInt(req.params.id, 10);
     const editBinds = {
@@ -126,13 +118,10 @@ async function editBill(req, res, next) {
     let conn;
     try {
         conn = await oracledb.getConnection();
-        
-        
+
         await conn.execute(`BEGIN edit_bill(:billId, :billDate, :otherPartyName, :billType); END;`, editBinds);
-        
-        console.log('before delete old bill items');
         await conn.execute(`BEGIN delete_bill_items(:billId); END;`, { billId: req.params.id });
-        
+
         for (const billedItem of req.body.billedItems) {
             const billedItemBinds = {
                 billId: req.params.id,
@@ -146,16 +135,10 @@ async function editBill(req, res, next) {
     } catch (error) {
         console.error(error);
         conn.rollback();
-        res.status(400).end();
+        res.status(400).end(database.getHumanReadableErrorMessage(error));
         next(error);
     } finally {
-        if (conn) {
-            try {
-                await conn.close();
-            } catch (error) {
-                console.error(error);
-            }
-        }
+        database.tryToCloseConnection();
     }
 }
 
