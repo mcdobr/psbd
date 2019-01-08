@@ -38,7 +38,7 @@ async function executeScripts() {
         console.log('Population of tables successful');
 
         console.log('Compilation of stored objects');
-        await executeMultipleDDL(conn, storedProceduresScript, /\/[\s$]/g);
+        await executeMultipleDDL(conn, storedProceduresScript, /\/(\s|$)/g);
         console.log('Compilation of stored objects successful');
 
     } catch (error) {
@@ -57,11 +57,9 @@ async function executeScripts() {
 async function executeMultipleDDL(conn, script, separator) {
     for (let ddlStatement of script.split(separator)) {
         try {
-            ddlStatement = removeComments(ddlStatement);
-            // console.log('Statement: ', ddlStatement);
-            if (ddlStatement) {
+            ddlStatement = removeOneLineComments(ddlStatement);
+            if (ddlStatement.trim()) {
                 const statementInfo = await conn.getStatementInfo(ddlStatement);
-                // console.log(statementInfo); 
                 await conn.execute(ddlStatement);
             }
         } catch (error) {
@@ -75,7 +73,6 @@ async function executeMultipleDDL(conn, script, separator) {
     }
 }
 
-function removeComments(statement) {
-    // Remove -- comments
+function removeOneLineComments(statement) {
     return statement.replace(/--.*\r?\n/g, '').trim();
 }
