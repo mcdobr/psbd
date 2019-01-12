@@ -61,12 +61,7 @@ CREATE OR REPLACE PROCEDURE update_stocks(
            bill.bill_date
       FROM billitem
      INNER JOIN bill ON billitem.bill_id = bill.id
-     WHERE product_id = v_product_id; -- AND
---           bill.bill_date >(
---               SELECT bill_date
---                 FROM bill
---                WHERE bill.id = v_updated_bill_id
---           );
+     WHERE product_id = v_product_id;
 
 BEGIN
     -- Select overlapping bills (if two bills that have the same product happen at the same time => FAIL
