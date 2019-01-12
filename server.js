@@ -25,6 +25,9 @@ oracledb.createPool(
         } else {
             console.log('Connected to Oracle Database');
             console.log('Maximum pool listeners: ' + pool.getMaxListeners());
+            console.log('Pool alias: ' + pool.poolAlias);
+            console.log('Pool min conns: ' + pool.poolMin);
+            console.log('Pool max conns: ' + pool.poolMax);
 
             app.use('/api', category, product, bills);            
         }

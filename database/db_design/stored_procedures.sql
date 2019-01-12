@@ -46,9 +46,8 @@ END delete_bill_items;
 
 -- This function intends to change newer bills' stock and also propagates the latest stock to the product table
 
-CREATE OR REPLACE PROCEDURE update_newer_bills(
+CREATE OR REPLACE PROCEDURE update_stocks(
     v_updated_bill_id IN bill.id%TYPE,
-    v_stock_difference IN billitem.quantity%TYPE,
     v_product_id IN product.id%TYPE
 )IS
 
@@ -57,17 +56,17 @@ CREATE OR REPLACE PROCEDURE update_newer_bills(
    
    -- Get all bill items with the product that appear on bills later than updated bill
 
-    CURSOR later_bill_item_cursor IS
+    CURSOR bill_with_item_cursor IS
     SELECT billitem.*,
            bill.bill_date
       FROM billitem
      INNER JOIN bill ON billitem.bill_id = bill.id
-     WHERE product_id = v_product_id AND
-           bill.bill_date >(
-               SELECT bill_date
-                 FROM bill
-                WHERE bill.id = v_updated_bill_id
-           );
+     WHERE product_id = v_product_id; -- AND
+--           bill.bill_date >(
+--               SELECT bill_date
+--                 FROM bill
+--                WHERE bill.id = v_updated_bill_id
+--           );
 
 BEGIN
     -- Select overlapping bills (if two bills that have the same product happen at the same time => FAIL
@@ -84,21 +83,21 @@ BEGIN
            this_item.product_id = other_item.product_id AND
            this_bill.bill_date = other_bill.bill_date;
 
-    IF(v_overlapping_bills_count > 2)THEN
+    IF(v_overlapping_bills_count >= 2)THEN
         raise_application_error(-20001, 'Overlapping concurrent bills.');
     END IF;
 
 
     --Update the later bill items
 
-    FOR later_bill_item_record IN later_bill_item_cursor LOOP
+    FOR later_bill_item_record IN bill_with_item_cursor LOOP
         UPDATE billitem
            SET
-            billitem.new_stock = billitem.quantity + nvl((
+            billitem.new_stock = nvl((
                 SELECT SUM(DECODE(bill.bill_type, 'incoming', 1, 'outgoing', - 1)* billitem.quantity)
                   FROM billitem
                  INNER JOIN bill ON billitem.bill_id = bill.id
-                 WHERE bill.bill_date < later_bill_item_record.bill_date AND
+                 WHERE bill.bill_date <= later_bill_item_record.bill_date AND
                        billitem.product_id = later_bill_item_record.product_id
             ), 0)
          WHERE billitem.id = later_bill_item_record.id;
@@ -125,7 +124,7 @@ BEGIN
    
    -- TODO: Exception for not found
 
-END update_newer_bills;
+END update_stocks;
 /
 
 -- Creates new bill item
@@ -199,7 +198,7 @@ BEGIN
 
    -- Propagate the stock change in later transactions
 
-    update_newer_bills(v_billid, v_stock_difference, v_productid);
+    update_stocks(v_billid, v_productid);
 END new_bill_item;
 /
 

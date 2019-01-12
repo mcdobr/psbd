@@ -7,7 +7,8 @@
     "start": "nodemon server.js",
     "test": "jasmine",
     "db_setup": "node setup.js",
-    "db_clean": "node clean.js"
+    "db_clean": "node clean.js",
+    "db_restart": "npm run db_clean && npm run db_setup"
   },
   "repository": {
     "type": "git",

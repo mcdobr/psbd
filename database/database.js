@@ -38,13 +38,6 @@ async function tryToCloseConnection(conn)
     }
 }
 
-/**
- * 
- * @param {*} find A function that returns the rows of a select
- * @param {*} req 
- * @param {*} res 
- * @param {*} next 
- */
 async function get(find, req, res, next) {
     try {
         let context = {...req.query, ...req.params};
@@ -68,6 +61,9 @@ function getHumanReadableErrorMessage(error) {
     switch (error.errorNum) {
         case 2290:
             message = 'Request leaves store with too few items to honor later requests or makes stock less than 0';
+            break;
+        case 20001:
+            message = 'Overlapping concurrent bills';
             break;
         default:
             message = 'Invalid request';

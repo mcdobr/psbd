@@ -138,7 +138,7 @@ async function editBill(req, res, next) {
         res.status(400).end(database.getHumanReadableErrorMessage(error));
         next(error);
     } finally {
-        database.tryToCloseConnection();
+        database.tryToCloseConnection(conn);
     }
 }
 
