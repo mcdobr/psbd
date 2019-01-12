@@ -7,7 +7,9 @@ const app = express();
 const bills = require('./bill');
 const category = require('./category/category.route');
 const product = require('./product');
+const cors = require('cors');
 
+app.use(cors());
 app.use(bodyParser.json({
 
 }));
